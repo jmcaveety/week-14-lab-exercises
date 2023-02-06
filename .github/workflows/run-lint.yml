@@ -1,0 +1,11 @@
+name: Run Linter
+run-name: Run ESLint ${{ github.actor }}
+on: [push]
+jobs:
+  run-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run ESLint
+        working-directory: mashup
+        run: npm run lint
