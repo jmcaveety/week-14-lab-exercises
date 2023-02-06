@@ -1,0 +1,42 @@
+name: Build Test
+run-name: Build Tests (${{ github.actor }})
+on: [push]
+jobs:
+  security-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: NPM audit
+        working-directory: combined
+        run: npm audit
+  run-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run ESLint
+        working-directory: combined
+        run: |
+          npm install
+          npm run lint
+  unit-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Jest test
+        working-directory: combined
+        run: |
+          npm install
+          npm run test
+
+  snyk-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run Snyk test
+        working-directory: combined
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_KEY }}
+        run: |
+          npm install snyk -g
+          snyk test
+
