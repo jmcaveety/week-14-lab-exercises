@@ -1,0 +1,15 @@
+{
+  "name": "unittesting",
+  "version": "1.0.0",
+  "description": "Project with some basic unit testing",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^29.4.1"
+  }
+}
