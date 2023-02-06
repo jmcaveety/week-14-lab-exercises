@@ -1,0 +1,10 @@
+name: Module Security Check
+run-name: ${{ github.actor }} is initiating a module security check
+on: [push]
+jobs:
+  security-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: NPM audit
+        working-directory: ./insecure
+        run: npm audit
