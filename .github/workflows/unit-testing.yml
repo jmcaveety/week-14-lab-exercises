@@ -1,0 +1,12 @@
+name: Unit testing
+run-name: Unit tests (${{ github.actor }})
+on: [push]
+jobs:
+  unit-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Jest test
+        working-directory: unittesting
+        run: npm run test
+
