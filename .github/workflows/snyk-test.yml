@@ -1,0 +1,14 @@
+name: Snyk Test
+run-name: Snyk security test (${{ github.actor }})
+on: [push]
+jobs:
+  snyk-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run Snyk test
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        run: |
+          npm install snyk -g
+          snyk test
