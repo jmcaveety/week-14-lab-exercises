@@ -14,7 +14,7 @@ jobs:
       - uses: aws-actions/aws-cloudformation-github-deploy@v1
       - uses: actions/checkout@v3
       - name: Deploy using CloudFormation
-      working-directory: cloudformation
-      with:
-        name: joseph-warwick-networks
-        template: template.yml
+        working-directory: cloudformation
+        with:
+          name: joseph-warwick-networks
+          template: template.yml
